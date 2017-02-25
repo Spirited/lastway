@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datasources xmlns="http://www.ironjacamar.org/doc/schema">
+
+	<datasource pool-name="oracleDS" jndi-name="java:jboss/oracleDS"
+		enabled="true" use-java-context="true">
+		<connection-url>jdbc:oracle:thin:book/book@serverdb12:1521/test.home.ru</connection-url>
+
+		<driver>oracle</driver>
+		<transaction-isolation>TRANSACTION_READ_COMMITTED</transaction-isolation>
+		<pool>
+			<min-pool-size>10</min-pool-size>
+			<max-pool-size>100</max-pool-size>
+			<prefill>true</prefill>
+		</pool>
+		<security>
+			<user-name>book</user-name>
+			<password>book</password>
+		</security>
+	</datasource>
+</datasources>
+

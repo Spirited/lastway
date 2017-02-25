@@ -1,0 +1,13 @@
+.classpath
+.factorypath
+.gradle/
+.project
+.settings/
+derby.log
+target/
+RemoteSystemsTempFiles/
+.recommenders/
+.metadata/
+lastway-web-b/
+web-app/
+web-test/

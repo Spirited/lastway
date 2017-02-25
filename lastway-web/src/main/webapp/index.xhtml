@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<!-- <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" /> -->
+<title>IGNORED</title>
+<h:outputStylesheet library="css" name="style.css" />
+</head>
+<h:body>
+	<!-- <f:view></f:view> -->
+
+	<!-- <ui:composition template="/template.xhtml">
+		<ui:define name="windowTitle">
+			#{msgs.title}
+		</ui:define>
+		<ui:define name="content">
+			Saturn has rings made of ice and dust <br/>
+			"#{msgs.ok}"
+			
+		</ui:define>
+	</ui:composition> -->
+	
+	<ui:composition template="/template.xhtml">
+		<ui:define name="content">
+			<h:form>
+				<h:panelGrid columns="3">
+					<p:outputLabel value="username"/>
+					<!-- <h:outputLabel escape="false" value="username" /> -->
+					<p:inputText id="username" size="30" required="true" value="#{accountController.username}"/>
+					<!-- <h:inputText name="username" value="#{accountController.username}" /> -->
+					
+					<p:messages />
+					<h:outputLabel id="user" value="#{accountController.username}" />
+				</h:panelGrid>
+				 <!-- <h:commandButton action="#{accountController.goToLoginPage()}" value="#{msgs.ok}" /> -->
+				 <!-- <h:commandButton action="#{accountController.goToAdminForm()}" value="#{msgs.ok}" /> -->
+				 <p:commandButton action="#{accountController.goToLoginPage()}" value="#{msgs.ok}" />
+				
+				<!-- <p:commandButton actionListener="#{accountController.displayAdminUsername()}" value="#{msgs.ok}" update="user"/> -->
+			</h:form>
+		</ui:define>
+	</ui:composition>
+	
+	<!-- <f:view>
+		<h3>Welcome, #{accountController.username}</h3>
+	</f:view> -->
+</h:body>
+</html>
