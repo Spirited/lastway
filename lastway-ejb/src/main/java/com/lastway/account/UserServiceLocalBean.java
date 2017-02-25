@@ -11,15 +11,15 @@ import javax.persistence.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.lastway.service.LoginService;
+import com.lastway.service.UserService;
 
 /**
  * Session Bean implementation class UserServiceBean
  */
 @Stateless
 @Local//(LoginService.class)
-public class LoginServiceLocalBean implements LoginService {
-	private static Logger log = LoggerFactory.getLogger(LoginServiceLocalBean.class);
+public class UserServiceLocalBean implements UserService {
+	private static Logger log = LoggerFactory.getLogger(UserServiceLocalBean.class);
 	
 	@PersistenceContext(unitName="lastway")
 	private EntityManager entityManager;
@@ -27,19 +27,19 @@ public class LoginServiceLocalBean implements LoginService {
     /**
      * Default constructor. 
      */
-    public LoginServiceLocalBean() {
+    public UserServiceLocalBean() {
         // TODO Auto-generated constructor stub
     }
 
 	/**
-     * @see LoginService#getLogin(long)
+     * @see UserService#getLogin(long)
      */
     public Login getLogin(long id) {
 		return entityManager.find(Login.class, id);
     }
 
 	/**
-     * @see LoginService#getLogin(String)
+     * @see UserService#getLogin(String)
      */
     public Login getLogin(String username) {
     	System.out.println("+++++++++++++++LoginServiceLocalBean: " + username);

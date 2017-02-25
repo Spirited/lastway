@@ -15,6 +15,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -71,6 +73,9 @@ public class User implements Serializable {
 	private Date last_login;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinTable(name = "jnd_user_groups",
+			joinColumns = @JoinColumn(name = "user_fk"),
+			inverseJoinColumns = @JoinColumn(name = "group_fk"))
 	private Set<Group> groups = new HashSet<>();
 	
 	public User() {	}
@@ -200,5 +205,9 @@ public class User implements Serializable {
 
 	public void setLast_login(Date last_login) {
 		this.last_login = last_login;
+	}
+	
+	public static void main(String[] args) {
+		
 	}
 }

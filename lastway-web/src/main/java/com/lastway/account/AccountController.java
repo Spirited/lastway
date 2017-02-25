@@ -9,7 +9,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 
-import com.lastway.service.LoginService;
+import com.lastway.service.UserService;
 
 @Named
 @SessionScoped
@@ -20,7 +20,7 @@ public class AccountController implements Serializable {
 	private static final long serialVersionUID = 2162291301700501657L;
 
 	@EJB
-	private LoginService userService;
+	private UserService userService;
 	
 	private String username;
 	private String password;
