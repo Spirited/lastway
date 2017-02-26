@@ -31,6 +31,11 @@ import com.sun.org.apache.xml.internal.security.utils.Base64;
 @Entity
 @Table(name="USERS")
 public class User implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private static final Logger log = LoggerFactory.getLogger(User.class);
 	
 	@Id
@@ -64,7 +69,7 @@ public class User implements Serializable {
 	private char active;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date register_date;
+	private Date registered_date;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date modified_date;
@@ -73,10 +78,19 @@ public class User implements Serializable {
 	private Date last_login;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "jnd_user_groups",
-			joinColumns = @JoinColumn(name = "user_fk"),
-			inverseJoinColumns = @JoinColumn(name = "group_fk"))
+	//@JoinTable(name = "jnd_user_groups",
+	@JoinTable(name = "users_groups",
+			joinColumns = @JoinColumn(name = "user_id"),
+			inverseJoinColumns = @JoinColumn(name = "group_id"))
 	private Set<Group> groups = new HashSet<>();
+	
+	public Set<Group> getGroups() {
+		return groups;
+	}
+	
+	public void setGroups(Set<Group> groups) {
+		this.groups = groups;
+	}
 	
 	public User() {	}
 	
@@ -183,12 +197,12 @@ public class User implements Serializable {
 		this.active = active;
 	}
 
-	public Date getRegister_date() {
-		return register_date;
+	public Date getRegisted_date() {
+		return registered_date;
 	}
 
-	public void setRegister_date(Date register_date) {
-		this.register_date = register_date;
+	public void setRegisted_date(Date register_date) {
+		this.registered_date = register_date;
 	}
 
 	public Date getModified_date() {
@@ -209,5 +223,40 @@ public class User implements Serializable {
 	
 	public static void main(String[] args) {
 		
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("User [id=");
+		builder.append(id);
+		builder.append(", lastName=");
+		builder.append(lastName);
+		builder.append(", name=");
+		builder.append(name);
+		builder.append(", patronymic=");
+		builder.append(patronymic);
+		builder.append(", email=");
+		builder.append(email);
+		builder.append(", skype=");
+		builder.append(skype);
+		builder.append(", msisdn=");
+		builder.append(msisdn);
+		builder.append(", login=");
+		builder.append(login);
+		builder.append(", password=");
+		builder.append(password);
+		builder.append(", active=");
+		builder.append(active);
+		builder.append(", registered_date=");
+		builder.append(registered_date);
+		builder.append(", modified_date=");
+		builder.append(modified_date);
+		builder.append(", last_login=");
+		builder.append(last_login);
+		builder.append(", groups=");
+		builder.append(groups);
+		builder.append("]");
+		return builder.toString();
 	}
 }

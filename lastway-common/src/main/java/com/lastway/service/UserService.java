@@ -1,11 +1,9 @@
 package com.lastway.service;
 
-import javax.ejb.Remote;
-
-import com.lastway.account.Login;
+import com.lastway.account.User;
 
 public interface UserService {
-	Login getLogin(long id);
-	Login getLogin(String username);
-	void createLogin(Login user);
+	User getUser(long id);
+	User getUser(String username);
+	void createUser(User user);
 }

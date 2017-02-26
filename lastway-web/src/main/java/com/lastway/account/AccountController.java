@@ -34,6 +34,7 @@ public class AccountController implements Serializable {
 	}
 	
 	public String goToLoginPage() {
+		System.out.println(userService.getUser(1));
 		return "login";
 	}
 	
@@ -66,7 +67,7 @@ public class AccountController implements Serializable {
 	public void displayAdminUsername() {
 		System.out.println("Username:" + (userService==null));
 		System.out.println("Username:" + username);
-		Login login = userService.getLogin(username);//.getLogin();		
+		User user = userService.getUser(username);//.getLogin();		
 		
 		/*if ( login == null ) {
 			FacesContext.getCurrentInstance().addMessage("null", new FacesMessage(FacesMessage.SEVERITY_INFO, "Success", "User Saved"));

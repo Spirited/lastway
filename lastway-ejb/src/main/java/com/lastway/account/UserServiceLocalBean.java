@@ -32,35 +32,36 @@ public class UserServiceLocalBean implements UserService {
     }
 
 	/**
-     * @see UserService#getLogin(long)
+     * @see UserService#getUser(long)
      */
-    public Login getLogin(long id) {
-		return entityManager.find(Login.class, id);
+    
+    public User getUser(long id) {
+		return entityManager.find(User.class, id);
     }
 
 	/**
-     * @see UserService#getLogin(String)
+     * @see UserService#getUser(String)
      */
-    public Login getLogin(String username) {
+    public User getUser(String username) {
     	System.out.println("+++++++++++++++LoginServiceLocalBean: " + username);
     	
     	Query query = entityManager.createQuery("select u from Login u where u.username = :username");
     	query.setParameter("username", username);
-    	Login login = null;
+    	User user = null;
     	try{
-    		login = (Login)query.getSingleResult();
+    		user = (User)query.getSingleResult();
     	} catch (NoResultException nre){
     		System.out.println("WARNING: No search result");
     	}
     	
-    	if ( login == null )
+    	if ( user == null )
     		System.out.println("Result null");
     	
-		return login;
+		return user;
     }
 
 	@Override
-	public void createLogin(Login user) {
+	public void createUser(User user) {
 		// TODO Auto-generated method stub
 		
 	}

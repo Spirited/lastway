@@ -5,6 +5,11 @@
 	<artifactId>lastway-common</artifactId>
 	<version>1.0-SNAPSHOT</version>
 
+	<properties>
+		<mysql.driver.version>5.1.39</mysql.driver.version>
+		<hibernate.version>5.2.4.Final</hibernate.version>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>javax</groupId>
@@ -34,6 +39,20 @@
 			<artifactId>slf4j-api</artifactId>
 			<version>1.7.23</version>
 		</dependency>
+		
+		<!-- Test -->
+		<dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.driver.version}</version>
+            <scope>test</scope>
+        </dependency>
+		<dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.version}</version>
+            <scope>test</scope>
+        </dependency>
 	</dependencies>
 
 	<build>
