@@ -1,10 +1,15 @@
 package com.lastway.account;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +24,12 @@ public class Role implements Serializable {
 	private String update;
 	private String delete;
 	private String view;
+	
+	@OneToMany
+	@JoinTable(name = "group_permision",
+			joinColumns = @JoinColumn(name = "role_id"),
+			inverseJoinColumns = @JoinColumn(name = "group_id"))
+	Set<Group> group = new HashSet<>();
 	
 	public String getCreate() {
 		return create;
@@ -49,6 +60,26 @@ public class Role implements Serializable {
 	}
 	public void setView(String view) {
 		this.view = view;
+	}
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Role [id=");
+		builder.append(id);
+		builder.append(", create=");
+		builder.append(create);
+		builder.append(", read=");
+		builder.append(read);
+		builder.append(", update=");
+		builder.append(update);
+		builder.append(", delete=");
+		builder.append(delete);
+		builder.append(", view=");
+		builder.append(view);
+		builder.append(", group=");
+		builder.append(group);
+		builder.append("]");
+		return builder.toString();
 	}
 	
 	
