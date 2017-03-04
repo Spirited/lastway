@@ -83,7 +83,7 @@
                 	<ejbVersion>3.2</ejbVersion>
                 </configuration>
             </plugin>
-
+			
 			
 		</plugins>
 	</build>

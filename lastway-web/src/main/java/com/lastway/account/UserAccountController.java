@@ -8,12 +8,15 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Named;
+import javax.persistence.Persistence;
+import javax.persistence.PersistenceUtil;
+import javax.validation.constraints.Size;
 
 import com.lastway.service.UserService;
 
 @Named
 @SessionScoped
-public class AccountController implements Serializable {
+public class UserAccountController implements Serializable {
 	/**
 	 * 
 	 */
@@ -22,6 +25,7 @@ public class AccountController implements Serializable {
 	@EJB
 	private UserService userService;
 	
+	@Size(min=5, max = 30, message="{step1_usernameSize}")
 	private String username;
 	private String password;
 	
@@ -34,7 +38,20 @@ public class AccountController implements Serializable {
 	}
 	
 	public String goToLoginPage() {
-		System.out.println(userService.getUser(1));
+		SecurityManager s = new SecurityManager();
+		
+		/*PersistenceUtil persistenceUtil = Persistence.getPersistenceUtil();
+    	if ( persistenceUtil == null )
+    		System.out.println("=="+UserAccountController.class.getName()+"== persistenceUtil is null ====");
+    	else
+    		System.out.println("##"+UserAccountController.class.getName()+"## persistenceUtil is NOT null ####");
+		
+		User user = userService.getUser(1L);
+		
+		System.out.println("load: " + persistenceUtil.isLoaded(user));
+		//System.out.println(user.getId() + ": " + user);
+		//System.out.println("Groups: " + user.getGroups());
+*/		
 		return "login";
 	}
 	
@@ -67,7 +84,7 @@ public class AccountController implements Serializable {
 	public void displayAdminUsername() {
 		System.out.println("Username:" + (userService==null));
 		System.out.println("Username:" + username);
-		User user = userService.getUser(username);//.getLogin();		
+		//User user = userService.getUser(username);//.getLogin();		
 		
 		/*if ( login == null ) {
 			FacesContext.getCurrentInstance().addMessage("null", new FacesMessage(FacesMessage.SEVERITY_INFO, "Success", "User Saved"));

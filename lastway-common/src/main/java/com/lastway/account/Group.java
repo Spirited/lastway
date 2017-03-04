@@ -1,15 +1,10 @@
 package com.lastway.account;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,12 +21,12 @@ public class Group implements Serializable {
 	@Column
 	private String description;
 	
-	//private Role role;
+	public Group() {}
 	
-	//@ManyToOne @JoinColumn
-	/*@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "users_id_fk")
-	private User user;*/
+	public Group(String name, String description) {
+		this.name = name;
+		this.description = description;
+	}
 	
 	public long getId() {
 		return id;

@@ -6,7 +6,8 @@
         <jta-data-source>java:/lastwayDS</jta-data-source>
         <class>com.lastway.account.User</class>
         <class>com.lastway.account.Group</class>
-        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <class>com.lastway.account.Role</class>
+        <!-- <exclude-unlisted-classes>false</exclude-unlisted-classes> -->
         <properties>
         	<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
 			<property name="hibernate.show_sql" value="true"/>

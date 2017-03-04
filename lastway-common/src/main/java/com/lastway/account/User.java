@@ -18,7 +18,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -39,7 +38,7 @@ public class User implements Serializable {
 	private static final Logger log = LoggerFactory.getLogger(User.class);
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="user_id")
 	private long id;
 	
@@ -77,11 +76,10 @@ public class User implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date last_login;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	//@JoinTable(name = "jnd_user_groups",
+	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	@JoinTable(name = "users_groups",
-			joinColumns = @JoinColumn(name = "user_id"),
-			inverseJoinColumns = @JoinColumn(name = "group_id"))
+			joinColumns = @JoinColumn(name = "user_id", referencedColumnName="user_id"),
+			inverseJoinColumns = @JoinColumn(name = "group_id", referencedColumnName="group_id"))
 	private Set<Group> groups = new HashSet<>();
 	
 	public Set<Group> getGroups() {
@@ -92,9 +90,14 @@ public class User implements Serializable {
 		this.groups = groups;
 	}
 	
+	public void setGroup(Group group) {
+		groups.add(group);
+	}
+	
 	public User() {	}
 	
-	public User(String lastName, String name, String patronymic, String email, String msisdn) {
+	public User(String login, String lastName, String name, String patronymic, String email, String msisdn) {
+		this.login = login;
 		this.lastName = lastName;
 		this.name = name;
 		this.patronymic = patronymic;
@@ -254,8 +257,8 @@ public class User implements Serializable {
 		builder.append(modified_date);
 		builder.append(", last_login=");
 		builder.append(last_login);
-		builder.append(", groups=");
-		builder.append(groups);
+//		builder.append(", groups=");
+//		builder.append(groups);
 		builder.append("]");
 		return builder.toString();
 	}

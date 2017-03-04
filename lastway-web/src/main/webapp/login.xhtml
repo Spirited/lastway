@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -7,34 +7,48 @@
 	xmlns:p="http://primefaces.org/ui">
 <head>
 <title>IGNORED</title>
-<h:outputStylesheet library="css" name="style.css"/>
-</head>
-<body>
-	<ui:composition template="/template.xhtml">
-		<ui:define name="windowTitle">
-			#{msgs.login_title}
-		</ui:define>
-		<ui:define name="content">
-			<p:growl id="growl" life="2000" />
-			<h:form style="margin-top: 30px;">
-				<h2 >#{msgs.welcome_title}</h2>
-				<!-- <h:outputLabel value="#{msgs.welcome_title}"/> -->
-				<h:panelGrid columns="2" style="margin-top: 10px;">
-					<h:outputLabel value="#{msgs.login}" />
-					<h:inputText  value="#{accountController.username}" style="margin-left: 5px;"/>
-					<h:outputLabel value="#{msgs.password}" />
-					<h:inputSecret value="#{accountController.password}" style="margin-left: 5px;"/>
-				</h:panelGrid>
-				<p:spacer height="10" />
-				<p:separator />
-				<h:commandButton  value="#{msgs.come_in}" action="#{accountController.goToAdminForm()}" />
+<h:body>
+	<div class="content">
+		<!-- <h:graphicImage library="images" name="logo.png" />
+		<span class="smallTxt">Welcome to Action Bazaar!</span> -->
+		<div class="divider"></div>
+
+		<h:form>
+
+
+			<p:panelGrid columns="3"
+				style="margin-top: 100px; margin-left: auto; margin-right: auto; width: 300px;">
+				<f:facet name="header">
+					<div style="text-align: left;">
+						Please sign into your account.
+					</div>
+				</f:facet>
+
+
+				<h:panelGroup style="float: right;">
+					<p:outputLabel for="username" value="Username" />
+				</h:panelGroup>
+				<p:inputText id="username" value="#{login.user}" size="25" />
+				<h:message for="username"/>
+
+				<h:panelGroup style="float: right;">
+					<p:outputLabel for="password" value="Password" />
+				</h:panelGroup>
+				<p:password id="password" value="#{login.pwd}" size="25"/>
+				<h:message for="password"/>
 				
-				<ui:remove>
-				<p:commandButton value="#{msgs.come_in}" id="growl" actionListener="#{accountController.buttonAction}" ajax="false" />
-				<p:commandButton value="#{msgs.come_in}" id="growl" actionListener="#{accountController.goToAdminForm()}" ajax="false" />
-				</ui:remove>
-			</h:form>
-		</ui:define>
-	</ui:composition>
-</body>
+				<f:facet name="footer">
+					<div style="float: left;">
+						<h:commandButton action="#{login.validateLoginPassword()}"
+							value="Login"></h:commandButton>
+					</div>
+				</f:facet>
+			</p:panelGrid>
+
+
+		</h:form>
+
+	</div>
+</h:body>
+</head>
 </html>

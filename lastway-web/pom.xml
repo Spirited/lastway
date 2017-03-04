@@ -46,15 +46,19 @@
 	</dependencyManagement>
 
 	<dependencies>
-		<!-- <dependency> <groupId>lastway</groupId> <artifactId>lastway-common</artifactId> 
-			<version>1.0-SNAPSHOT</version> </dependency> -->
-
 		<dependency>
 			<groupId>lastway</groupId>
 			<artifactId>lastway-ejb</artifactId>
 			<version>1.0-SNAPSHOT</version>
+
 		</dependency>
-		
+
+		<dependency>
+			<groupId>lastway</groupId>
+			<artifactId>lastway-common</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
@@ -95,15 +99,22 @@
 			<version>1.1.0.Final</version>
 			<scope>provided</scope>
 		</dependency>
+		
 		<!-- Bean Validation Implementation -->
 		<!-- Provides portable constraints such as @NotEmpty, @Email and @Url -->
 		<!-- Hibernate Validator is only the JSR-303 implementation at the moment, 
 			so we can assume it's provided -->
+
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>4.0.0.GA</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>4.2.8.Final</version>
 		</dependency>
 		<!-- JSF -->
 		<dependency>
