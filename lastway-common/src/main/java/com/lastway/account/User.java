@@ -76,7 +76,7 @@ public class User implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date last_login;
 	
-	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinTable(name = "users_groups",
 			joinColumns = @JoinColumn(name = "user_id", referencedColumnName="user_id"),
 			inverseJoinColumns = @JoinColumn(name = "group_id", referencedColumnName="group_id"))

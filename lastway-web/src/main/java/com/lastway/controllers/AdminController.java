@@ -1,4 +1,4 @@
-package com.lastway.account;
+package com.lastway.controllers;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

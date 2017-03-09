@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PROCESS model-entity="JSFProcess">
  <PROCESS-ITEM NAME="rules:#index.xhtml" PATH="/index.xhtml"
-  SHAPE="198,110,0,0" model-entity="JSFProcessGroup" persistent="true"/>
+  SHAPE="512,360,50,25" model-entity="JSFProcessGroup" persistent="true"/>
  <PROCESS-ITEM NAME="rules:#welcome.xhtml" PATH="/welcome.xhtml"
-  SHAPE="96,344,50,25" model-entity="JSFProcessGroup" persistent="true"/>
+  SHAPE="144,472,50,25" model-entity="JSFProcessGroup" persistent="true"/>
  <PROCESS-ITEM NAME="rules:#login.xhtml" PATH="/login.xhtml"
-  SHAPE="32,241,0,0" model-entity="JSFProcessGroup">
+  SHAPE="648,48,50,41" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#login.xhtml:0" NAME="item"
    PATH="/login.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="admin::#account#admin.xhtml" NAME="output"
-    PATH="/account/admin.xhtml" TARGET="rules:#account#admin.xhtml"
-    TITLE="admin" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="admin:#{login.validateLoginPassword()}:#account#admin.xhtml"
+    NAME="output" PATH="/account/admin.xhtml"
+    TARGET="rules:#account#admin.xhtml"
+    TITLE="#{login.validateLoginPassword()}:admin" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#account#admin.xhtml"
-  PATH="/account/admin.xhtml" SHAPE="240,257,0,0" model-entity="JSFProcessGroup">
+  PATH="/account/admin.xhtml" SHAPE="96,80,50,41" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#account#admin.xhtml:0" NAME="item"
    PATH="/account/admin.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
-    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="login:#{login.logout()}:#login.xhtml"
+    NAME="output" PATH="/login.xhtml" TARGET="rules:#login.xhtml"
+    TITLE="#{login.logout()}:login" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#manager.xhtml" PATH="/manager.xhtml"
   SHAPE="352,455,0,0" model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#relogin.xhtml" PATH="/relogin.xhtml"
+  SHAPE="982,241,0,0" model-entity="JSFProcessGroup" persistent="true"/>
 </PROCESS>

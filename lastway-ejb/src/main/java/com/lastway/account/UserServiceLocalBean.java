@@ -21,8 +21,8 @@ import com.lastway.account.User;
 
 
 @Stateless
-//@Local//(LoginService.class)
-@Remote
+@Local//(LoginService.class)
+//@Remote
 public class UserServiceLocalBean implements UserService {
 	private static Logger log = LoggerFactory.getLogger(UserServiceLocalBean.class);
 
@@ -35,7 +35,7 @@ public class UserServiceLocalBean implements UserService {
 	}
 
 	private void updateLoginTime(long id) {
-		Query query = entityManager.createQuery("UPDATE " + User.class.getName() + " SET last_login WHERE id = :id");
+		Query query = entityManager.createQuery("UPDATE " + User.class.getName() + " SET last_login=sysdate() WHERE id = :id");
 		query.setParameter("id", id);
 		
 		query.executeUpdate();
@@ -61,6 +61,8 @@ public class UserServiceLocalBean implements UserService {
 			
 			if ( !user.getPassword().equals(password) )
 				return false;
+			
+			updateLoginTime(user.getId());
 			
 			return true;
 		} catch (NoResultException e) {
@@ -94,9 +96,10 @@ public class UserServiceLocalBean implements UserService {
 	}
 
 	public User getUser(String username) {
-		/*System.out.println("+++++++++++++++LoginServiceLocalBean: " + username);
-
-    	Query query = entityManager.createQuery("select u from Login u where u.username = :username");
+		/*System.out.println("+++++++++++++++LoginServiceLocalBean: " + username); */
+		
+		
+    	Query query = entityManager.createQuery("select u from " + User.class.getName() + " u where u.login = :username");
     	query.setParameter("username", username);
     	User user = null;
     	try{
@@ -105,10 +108,11 @@ public class UserServiceLocalBean implements UserService {
     		System.out.println("WARNING: No search result");
     	}
 
-    	if ( user == null )
-    		System.out.println("Result null");*/
+    	if ( user == null ) 
+    		System.out.println("Result null");
+    	
 
-		return null;
+		return user;
 	}
 
 	@Override

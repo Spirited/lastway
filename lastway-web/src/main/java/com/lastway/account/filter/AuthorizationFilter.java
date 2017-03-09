@@ -41,7 +41,6 @@ public class AuthorizationFilter implements Filter {
 				System.out.println("1+1 = " + servletRequest.getContextPath());
 				chain.doFilter(request, response);
 			}else {
-				//chain.doFilter(request, response);
 				System.out.println("2+2 == " + servletRequest.getContextPath()+"/login.faces");
 				servletResponse.sendRedirect(servletRequest.getContextPath()+"/login.faces");
 			}

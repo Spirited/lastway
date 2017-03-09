@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Insert title here</title>
+	<h:outputStylesheet library="css" name="admin_style.css"/>
+</h:head>
+<h:body>
+	<f:view>
+        <h1>JavaBeat JSF 2.2 Examples</h1>
+        <h2>JSF2 Dynamic Navigation - Action Outcome Example</h2>
+        <h:form prependId="false">
+            <h:outputText value="Your Username or Password is wrong, please relogin"/>
+            <h:commandButton value="Relogin" action="/login.xhtml"></h:commandButton>
+        </h:form>
+    </f:view>
+</h:body>
+</html>

@@ -37,10 +37,13 @@
 				<p:password id="password" value="#{login.pwd}" size="25"/>
 				<h:message for="password"/>
 				
+				<br />
+				
 				<f:facet name="footer">
 					<div style="float: left;">
-						<h:commandButton action="#{login.validateLoginPassword()}"
-							value="Login"></h:commandButton>
+						
+						
+						<h:commandButton action="#{login.validateLoginPassword()}" value="Login"/>
 					</div>
 				</f:facet>
 			</p:panelGrid>
