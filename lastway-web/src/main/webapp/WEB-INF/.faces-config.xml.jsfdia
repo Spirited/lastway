@@ -9,16 +9,16 @@
   <PROCESS-ITEM ID="rules:#login.xhtml:0" NAME="item"
    PATH="/login.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
-    ID="admin:#{login.validateLoginPassword()}:#account#admin.xhtml"
-    NAME="output" PATH="/account/admin.xhtml"
-    TARGET="rules:#account#admin.xhtml"
+    ID="admin:#{login.validateLoginPassword()}:#account#admin.xhtml-b"
+    NAME="output" PATH="/account/admin.xhtml-b"
+    TARGET="rules:#account#admin.xhtml-b"
     TITLE="#{login.validateLoginPassword()}:admin" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#account#admin.xhtml"
-  PATH="/account/admin.xhtml" SHAPE="96,80,50,41" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#account#admin.xhtml:0" NAME="item"
-   PATH="/account/admin.xhtml" model-entity="JSFProcessItem">
+ <PROCESS-ITEM NAME="rules:#account#admin.xhtml-b"
+  PATH="/account/admin.xhtml-b" SHAPE="96,80,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#account#admin.xhtml-b:0" NAME="item"
+   PATH="/account/admin.xhtml-b" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT ID="login:#{login.logout()}:#login.xhtml"
     NAME="output" PATH="/login.xhtml" TARGET="rules:#login.xhtml"
     TITLE="#{login.logout()}:login" model-entity="JSFProcessItemOutput"/>

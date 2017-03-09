@@ -7,22 +7,19 @@
   <navigation-case>
    <from-action>#{login.validateLoginPassword()}</from-action>
    <from-outcome>admin</from-outcome>
-   <to-view-id>/account/admin.xhtml</to-view-id>
+   <to-view-id>/account/admin.xhtml-b</to-view-id>
    <redirect/>
   </navigation-case>
  </navigation-rule>
- 
-  <navigation-rule>
-  <from-view-id>/account/admin.xhtml</from-view-id>
+ <navigation-rule>
+  <from-view-id>/account/admin.xhtml-b</from-view-id>
   <navigation-case>
-  	<from-action>#{login.logout()}</from-action>
+   <from-action>#{login.logout()}</from-action>
    <from-outcome>login</from-outcome>
    <to-view-id>/login.xhtml</to-view-id>
    <redirect/>
   </navigation-case>
  </navigation-rule>
- 
- 
  <application>
   <resource-bundle>
    <base-name>com.lastway.messages</base-name>
