@@ -14,7 +14,7 @@
  <navigation-rule>
   <from-view-id>/account/admin.xhtml-b</from-view-id>
   <navigation-case>
-   <from-action>#{login.logout()}</from-action>
+   <!-- <from-action>#{login.logout()}</from-action> -->
    <from-outcome>login</from-outcome>
    <to-view-id>/login.xhtml</to-view-id>
    <redirect/>

@@ -1,6 +1,7 @@
 package com.lastway.account;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -64,6 +65,10 @@ public class Login implements Serializable {
 		}
 	}
 	
+//	public List<User> getUsers() {
+//		return userService.findAllUsers();
+//	}
+	
 	private String getUserMainForm(String username) {
 		User u = userService.getUser(username);
 		
@@ -78,9 +83,9 @@ public class Login implements Serializable {
 	public String logout() {
 		HttpSession session = SessionUtils.getSession();//ils.getSession();
 		session.invalidate();
-		
 		System.out.println(user + " logout!");
 		
-		return "login?faces-redirect=true";
+		return "login";
+		//return "login?faces-redirect=true";
 	}
 }

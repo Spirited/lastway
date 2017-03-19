@@ -1,15 +1,20 @@
 package com.lastway.account;
 
 
+import java.util.List;
 import java.util.Set;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.Local;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
+import javax.enterprise.inject.Produces;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import javax.persistence.PersistenceUtil;
 import javax.persistence.Query;
 
@@ -19,21 +24,28 @@ import org.slf4j.LoggerFactory;
 import com.lastway.service.UserService;
 import com.lastway.account.User;
 
-
 @Stateless
-@Local//(LoginService.class)
-//@Remote
+@Local
 public class UserServiceLocalBean implements UserService {
 	private static Logger log = LoggerFactory.getLogger(UserServiceLocalBean.class);
 
 	@PersistenceContext(unitName="lastway")
-	//@PersistenceUnit(name="lastway")
 	private EntityManager entityManager;
 
 	public UserServiceLocalBean() {
 
 	}
-
+	
+	@Override
+	public List<User> findAllUsers() {
+		//List<User> result = entityManager.createNamedQuery("findAllUsers", User.class).getResultList();
+		Query query = entityManager.createQuery("select u from " + User.class.getName() + " u", User.class);
+		List<User> result = query.getResultList();
+		System.out.println("Query result:\t\t" + result);
+		
+		return result;
+	}
+	
 	private void updateLoginTime(long id) {
 		Query query = entityManager.createQuery("UPDATE " + User.class.getName() + " SET last_login=sysdate() WHERE id = :id");
 		query.setParameter("id", id);
@@ -96,9 +108,6 @@ public class UserServiceLocalBean implements UserService {
 	}
 
 	public User getUser(String username) {
-		/*System.out.println("+++++++++++++++LoginServiceLocalBean: " + username); */
-		
-		
     	Query query = entityManager.createQuery("select u from " + User.class.getName() + " u where u.login = :username");
     	query.setParameter("username", username);
     	User user = null;

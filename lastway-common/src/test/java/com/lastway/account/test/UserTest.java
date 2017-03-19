@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.PersistenceContext;
+
 import org.junit.Test;
 
 import com.lastway.account.Group;
@@ -18,7 +20,6 @@ public class UserTest extends AbstractPersistentTest {
 		System.out.println("LastName: " + user1.getLastName());
 		System.out.println("Groups: " + user1.getGroups());
 	}
-	
 	//@Test
 	public void createUserTest() {
 		User user = new User("Komsomol_1917", "Lenin", "Vladimir", "Illich", "lenin@mavsoley.ru", "046667898");

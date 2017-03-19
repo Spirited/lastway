@@ -1,5 +1,6 @@
 package com.lastway.service;
 
+import java.util.List;
 import java.util.Set;
 
 import com.lastway.account.Group;
@@ -12,4 +13,5 @@ public interface UserService {
 	Set<Group> getGroups(User user);
 	Set<Group> getGroups(long id);
 	boolean validate(String login, String password);
+	List<User> findAllUsers();
 }

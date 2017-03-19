@@ -7,23 +7,52 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Insert title here</title>
-	<h:outputStylesheet library="css" name="admin_style.css"/>
+	<h:outputStylesheet library="css" name="style.css" />
 </h:head>
 <h:body>
-	<p:panel id="basic" header="Панель Администратора" style="margin-bottom:20px">
-        <h:panelGrid columns="2" cellpadding="10">
-            <f:view>
-            	<p:outputLabel>Создать пользователя</p:outputLabel>
-            	<p:outputLabel>Создать группу</p:outputLabel>
-            </f:view>
-            
-            <f:view>
-            	<h1>Состояние системы</h1>
-            	<!-- <p:dataTable var="car" value="#{dtBasicView.cars}">
-            	</p:dataTable> -->
-            </f:view>
-            
-        </h:panelGrid>
-    </p:panel>
+	<p:panel id="basic" name="content" header="Панель Администратора"
+		style="margin-bottom:20px">
+		<h:panelGrid columns="2" cellpadding="10">
+			<f:view>
+				<p:outputLabel>Создать пользователя</p:outputLabel>
+				<p:outputLabel>Создать группу</p:outputLabel>
+			</f:view>
+
+			<f:view>
+				<h1>Состояние системы</h1>
+				<p:dataTable var="u" value="#{admin.users}">
+					<p:column headerText="#{msgs.last_name}">
+						#{u.lastName}	
+					</p:column>
+					<p:column headerText="#{msgs.name}">
+						#{u.name}	
+					</p:column>
+					<p:column headerText="#{msgs.patronymic}">
+						#{u.patronymic}	
+					</p:column>
+ 					<p:column headerText="#{msgs.register_date}">
+ 						<h:outputText value="#{u.registed_date}">
+    						<f:convertDateTime pattern="dd MMM yyyy HH:MM:SS" type="both" locale="uk_UA"/>
+						</h:outputText>
+ 						
+ 					</p:column>
+ 					<p:column headerText="#{msgs.last_login}">
+ 						<h:outputText value="#{u.last_login}">
+    						<f:convertDateTime pattern="dd MMM yyyy hh:mm:ss" type="both" locale="uk_UA"/>
+						</h:outputText>
+ 					</p:column>
+  					<p:column>
+						#{msgs.details}	
+					</p:column>
+				</p:dataTable>
+			</f:view>
+
+		</h:panelGrid>
+		<f:facet name="footer">
+			<h:link action="#{login.logout}" value="Logout" />
+		</f:facet>
+	</p:panel> 
+	    
+	
 </h:body>
 </html>

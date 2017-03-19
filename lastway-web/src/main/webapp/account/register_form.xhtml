@@ -12,15 +12,15 @@
 <h:body>
 	<h:form>
 		<h:panelGrid id="grid" columns="3" cellpadding="5">
-			<p:outputLabel for="default" value="Логин:" />
+			<p:outputLabel for="default" value="#{msgs.register_form_login}" />
         	<p:inputText id="default" required="true" />
         	<p:message for="default" />
  
-        	<p:outputLabel for="txt" value="Пароль:" />
+        	<p:outputLabel for="txt" value="#{msgs.register_form_password}" />
         	<p:inputText id="txt" required="true" />
         	<p:message for="txt" display="text" />
  
-        	<p:outputLabel for="icon" value="Icon:" />
+        	<p:outputLabel for="icon" value="#{msgs.register_form_group}" />
         	<p:inputText id="icon" required="true" />
         	<p:message for="icon" display="icon" />
  
@@ -28,7 +28,7 @@
         	<p:inputText id="tt" required="true" />
         	<p:message for="tt" display="tooltip" />
 		</h:panelGrid>
-		<p:commandButton id="submitButton" value="Submit" update="grid" />
+		<p:commandButton id="submitButton" value="#{msgs.register_form_save_button}" update="grid" />
 	</h:form>
 </h:body>
 </html>

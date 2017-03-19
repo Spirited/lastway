@@ -19,9 +19,8 @@
   PATH="/account/admin.xhtml-b" SHAPE="96,80,50,41" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#account#admin.xhtml-b:0" NAME="item"
    PATH="/account/admin.xhtml-b" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="login:#{login.logout()}:#login.xhtml"
-    NAME="output" PATH="/login.xhtml" TARGET="rules:#login.xhtml"
-    TITLE="#{login.logout()}:login" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#manager.xhtml" PATH="/manager.xhtml"

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(filterName = "AuthFilter", urlPatterns = { "*.faces" })
+//@WebFilter(filterName = "AuthFilter", urlPatterns = { "*.faces" })
 public class AuthorizationFilter implements Filter {
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
@@ -34,7 +34,7 @@ public class AuthorizationFilter implements Filter {
 			
 			if ( reqURI.indexOf("/login.faces") >= 0 
 					|| (session != null && session.getAttribute("username") != null )
-					//|| reqURI.indexOf("/account/") >= 0
+					|| reqURI.indexOf("/account/") >= 0
 					|| reqURI.contains("javax.faces.resources")) {
 				
 				

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,6 +18,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -29,6 +32,9 @@ import com.sun.org.apache.xml.internal.security.utils.Base64;
 
 @Entity
 @Table(name="USERS")
+
+@NamedNativeQueries(value={
+		@NamedNativeQuery(name="findAllUsers",query="select u from Users u")})
 public class User implements Serializable {
 	/**
 	 * 
@@ -67,6 +73,7 @@ public class User implements Serializable {
 	@Column
 	private char active;
 	
+	@Column(name="registered_date")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date registered_date;
 	
@@ -76,7 +83,8 @@ public class User implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date last_login;
 	
-	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	//cascade = CascadeType.PERSIST
+	@OneToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "users_groups",
 			joinColumns = @JoinColumn(name = "user_id", referencedColumnName="user_id"),
 			inverseJoinColumns = @JoinColumn(name = "group_id", referencedColumnName="group_id"))
