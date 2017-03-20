@@ -9,6 +9,7 @@ RemoteSystemsTempFiles/
 .recommenders/
 .metadata/
 lastway-web-b/
+deployments/
 web-app/
 web-test/
 persistence.xml
