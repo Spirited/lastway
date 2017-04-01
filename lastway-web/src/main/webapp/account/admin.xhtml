@@ -24,9 +24,9 @@
 			
 			<p:layoutUnit position="center">
 				
-				<h:form>
+				<h:form id="form">
 					<h1>Состояние системы</h1>
-					<p:dataTable var="u" value="#{admin.users}" selection="#{admin.selectedUser}" selectionMode="single" 
+					<p:dataTable id="dtable" var="u" value="#{admin.users}" selection="#{admin.selectedUser}" selectionMode="single" 
 										rowKey="#{u.name}" rowIndexVar="rowIndex">
 						 
 					
@@ -46,25 +46,17 @@
 							<!-- <f:convertDateTime pattern="dd MMM yyyy HH:mm:ss" type="both" locale="uk_UA" timeZone="Europe/Kiev" /> -->
 						</h:outputText>
 					</p:column>
-					<!-- <p:column>
+					 <p:column>
 						
 						
 					
-						<p:commandButton update="display" oncomplete="dlg2.show()" value="#{msgs.details}">
-                			<f:setPropertyActionListener value="#{u}"
-                    							target="#{admin.selectedUser}" />
-            			</p:commandButton>
-					</p:column> -->
-					
-					<f:facet name="footer">
-       					<p:commandButton value="View" oncomplete="dlg2.show()"
-                    				image="ui-icon ui-icon-search" />
-            				
-        			</f:facet>
+						<!-- <p:commandButton value="View" update=":dtable:dialog:display" oncomplete="dlg2.show()"
+                    				image="ui-icon ui-icon-search" /> -->
+					</p:column>
 					
 				</p:dataTable>
 				
-				<p:dialog header="#{msgs.modal_dialog_title_user_details}" showEffect="clip"
+				<p:dialog id="dialog" header="#{msgs.modal_dialog_title_user_details}" showEffect="clip"
 								widgetVar="dlg2" height="300" width="600" >
 							<p:panelGrid id="display" columns="2">
 								<h:outputText value="#{msgs.last_name}" />
