@@ -32,10 +32,10 @@ public class UserTest extends AbstractPersistentTest {
 		groups.add(systemManager);
 		user.setGroups(groups);
 		
-		tx.begin();
-		em.persist(user);
-		em.persist(systemManager);
-		tx.commit();
+//		tx.begin();
+//		em.persist(user);
+//		em.persist(systemManager);
+//		tx.commit();
 		
 		
 		/*Query query = em.createQuery("SELECT u FROM User u");
