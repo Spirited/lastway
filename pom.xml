@@ -108,9 +108,9 @@
 			</configuration> </plugin> </plugins> -->
 	</build>
 	<modules>
-		<module>../lastway-ear</module>
-		<module>../lastway-ejb</module>
-		<module>../lastway-web</module>
-		<module>../lastway-common</module>
+		<module>lastway-ear</module>
+		<module>lastway-ejb</module>
+		<module>lastway-web</module>
+		<module>lastway-common</module>
 	</modules>
 </project>

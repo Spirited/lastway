@@ -13,3 +13,9 @@ deployments/
 web-app/
 web-test/
 persistence.xml
+*.ear
+*.war
+*.jar
+*.class
+*.iml
+.idea/
